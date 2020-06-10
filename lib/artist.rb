@@ -21,13 +21,17 @@ class Artist
     song.artist = self
     @songs << song
   end
+
+  def self.create(name)
+    artist = self.new(name)
+    artist.name = name
+    artist
+  end
   
- def self.find_or_create_by_name(name)
-    if artist = self.find_by_name(name)
-      artist
-    else
-      self.create_by_name(name)
-    end
-end
+  def self.find(name)
+    self.all.detect {|artist| artist.name == name}
+  end
   
+  
+
 end
