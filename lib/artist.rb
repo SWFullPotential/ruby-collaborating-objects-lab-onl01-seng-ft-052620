@@ -23,8 +23,11 @@ class Artist
   end
   
  def self.find_or_create_by_name(name)
-    self.find(name) || self.create(name)
-  end
+    if artist = self.find_by_name(name)
+      artist
+    else
+      self.create_by_name(name)
+    end
 
   
 end
